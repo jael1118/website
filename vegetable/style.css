@@ -1,0 +1,212 @@
+/* ===== 全站基本樣式 ===== */
+:root {
+	--bg: #edf2c5; /* 背景色（淡綠）*/
+	--olive: #778a50; /* 深橄欖綠（區塊標題、footer）*/
+	--nav: #778a50; /* 導覽列顏色 */
+	--panel: #f7fbda; /* 區塊背景色 */
+	--muted: #666; /* 次要文字 */
+	--wrap-w: 1050px; /* 置中內容最大寬度，可調 */
+}
+
+* {
+	box-sizing: border-box;
+}
+/* 讓 padding 不會推高元素寬度 */
+
+/* body 背景與字型 */
+body {
+	margin: 0;
+	font-family: "Noto sans",sans-serif;
+	background: var(--bg);
+	color: #333;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.social-icon {
+	font-size: 16px; /* 圖示大小 */
+	color: white; /* 圖示本身的顏色 */
+	background-color: var(--nav); /* 背景色，使用您定義的導覽列顏色 */
+	padding: 6px; /* 內距，讓圖示周圍有空間 */
+	border-radius: 4px; /* 圓角 */
+	margin-right: 8px; /* 圖示之間和按鈕的間距 */
+	display: inline-flex; /* 讓背景方塊也能垂直置中 */
+	align-items: center; /* 圖示在方塊內垂直置中 */
+	justify-content: center; /* 圖示在方塊內水平置中 */
+	width: 32px; /* 固定寬度，讓方塊更方正 */
+	height: 32px; /* 固定高度 */
+}
+
+/* 置中容器：頁面左右留白、寬度固定（在大螢幕上看起來像截圖） */
+.wrap {
+	max-width: var(--wrap-w); /* 最寬不超過 1050px */
+	margin: 24px auto; /* 上下 24px，左右自動置中 */
+	padding: 0 18px; /* 內側左右小邊距，避免貼邊 */
+}
+
+/* ===== header 區 ===== */
+.site-header {
+	margin-bottom: 12px; /* header 與 banner 之間留空 */
+}
+
+/* 標題與右側按鈕排成一行 */
+.header-left, .header-right {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* 網站標題 */
+.site-title {
+	margin: 0;
+	font-size: 44px;
+	color: #778A50; /* 深綠 */
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+/* header 右側：社群與按鈕排列 */
+.header-right {
+	float: right;
+	margin-top: 6px;
+}
+
+	/* 登入/加入按鈕樣式 */
+	.header-right .btn {
+		display: inline-block;
+		text-decoration: none;
+		background: #edf2c5;
+		color: #333;
+		border-radius: 4px;
+		padding: 4px 8px;
+		margin-left: 8px;
+		font-size: 14px;
+		border: 1px solid rgba(0,0,0,0.07);
+	}
+
+/* ===== 導覽列（深色條） ===== */
+/* 導覽列獨立成一條條，寬度撐滿 .wrap 內部空間 */
+.main-nav {
+	background: var(--nav);
+	border-radius: 3px;
+	margin-top: 12px; /* 與標題有間距 */
+	padding: 10px 14px; /* 導覽列內距 */
+}
+
+	/* 導覽清單水平排列並保留空隙 */
+	.main-nav ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 24px; /* 每個選單項目的間隔（決定「空隙」感） */
+		align-items: center;
+	}
+
+	.main-nav a {
+		color: #f7fbda;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 15px;
+		padding: 6px 10px;
+		border-radius: 3px;
+	}
+
+		/* 滑鼠移上時淡化背景（可視化）*/
+		.main-nav a:hover {
+			background: rgba(255,255,255,0.06);
+		}
+
+/* ===== 橫幅 Banner ===== */
+/* banner 與周圍留空：左右不貼滿 wrap 但圖片寬度為 100%（置中容器寬度） */
+.banner {
+	margin: 18px 0; /* 上下留白會讓 banner 不緊貼 nav */
+	border-radius: 3px;
+	overflow: hidden; /* 圓角+圖片不外溢 */
+}
+
+	.banner img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+/* ===== 主內容區 ===== */
+/* content 使用 flex，設定左右欄寬度比例，並保留欄間距 */
+.content {
+	display: flex;
+	gap: 28px; /* 兩欄之間的間距（越大越分離）*/
+	align-items: flex-start;
+	margin-bottom: 28px;
+}
+
+/* 左右欄明確寬度比例（左 58%，右 38%，剩餘為 gap） */
+.left {
+	flex: 1;
+	background:none;
+	padding: 0px;
+	border-radius: 4px;
+}
+
+.right {
+	flex: 1;
+	background:none;
+	padding: 0px;
+	border-radius: 4px;
+}
+
+	/* 區塊標題（綠色 bar） */
+.content h2 {
+	background: var(--nav);
+	color: white;
+	padding: 10px 10px; /* 上下內距，左右不留空 */
+	border-radius: 3px;
+	font-size: 16px;
+	width: 100%; /* 重點：讓綠條寬度跟父容器一樣寬 */
+	box-sizing: border-box; /* 避免 padding 影響寬度計算 */
+	margin-bottom: 12px; /* 跟下方內容拉開距離 */
+}
+
+
+/* 左邊的三張小圖排列 */
+.veg-images {
+	display: flex;
+	gap: 12px;
+	margin-top: 12px;
+}
+
+	.veg-images img {
+		width: 100%;
+		max-width: 300px; /* 控制每張圖最大寬度 */
+		height: auto;
+		border-radius: 4px;
+		display: block;
+	}
+
+/* 右側聯絡框內文稍微淡色背景與內距 */
+.contact-box {
+	width:100%;
+	background: rgba(255,255,255,0.6);
+	padding: 12px;
+	border-radius: 3px;
+	color: var(--muted);
+	font-size: 12px;
+}
+
+/* 聯絡資訊小字 */
+.contact-info {
+	font-size: 12px;
+	color: #444;
+	margin-top: 10px;
+}
+
+/* ===== footer ===== */
+footer {
+	background: var(--olive);
+	color: #fff;
+	text-align: center;
+	padding: 12px 10px;
+	border-radius: 3px;
+	font-size: 13px;
+	margin-top: 8px;
+}
+
